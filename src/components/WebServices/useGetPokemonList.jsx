@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 async function getAllPokemons(setPokemons) {
-  const url = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=1302%22";
+  const url = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=1025%22";
   try {
     const response = await fetch(url);
     if (!response.ok) {

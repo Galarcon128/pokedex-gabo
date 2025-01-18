@@ -1,10 +1,23 @@
 import PokemonCard from "../../PokemonCard";
-export default function PokeBrowser({ pokemonList }) {
-  const pokemonIndex = 0;
+import { useGetPokemonList } from "../../WebServices";
+export default function PokeBrowser() {
+  const { pokemonList, loading } = useGetPokemonList();
+  const pokemonIndex = 1;
   return (
     <div>
-      poke-browser
-      <PokemonCard pokemonIndex={pokemonIndex} />
+      {loading ? (
+        <>Loading...</>
+      ) : (
+        <div
+          style={{
+            height: "calc(100vh - 80px)",
+            backgroundColor: "var(--pokedex-color)",
+          }}
+        >
+          poke-browser : pokemon{" " + pokemonIndex}
+          <PokemonCard pokemonIndex={pokemonIndex} />
+        </div>
+      )}
     </div>
   );
 }
