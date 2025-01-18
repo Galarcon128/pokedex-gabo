@@ -65,11 +65,9 @@ export default function useGetPokemonData(pokemonIndex) {
   const [pokemon, setPokemon] = useState();
   const loading = !pokemon ? true : false;
 
-  useEffect(() => {
-    if (!pokemon) {
-      getPokemonData(pokemonIndex, setPokemon);
-    }
-  }, [pokemon]);
+  const load = () => {
+    getPokemonData(pokemonIndex, setPokemon);
+  };
 
-  return { pokemon, loading };
+  return { pokemon, loading, load };
 }

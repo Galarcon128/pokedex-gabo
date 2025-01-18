@@ -8,7 +8,9 @@ async function getAllPokemons(setPokemons) {
       throw new Error(`Response status: ${response.status}`);
     }
     const json = await response.json();
-    setPokemons(json.results);
+    if (Array.isArray(json.results)) {
+      setPokemons(json.results.map((r) => r.name));
+    }
   } catch (error) {
     console.error(error.message);
   }

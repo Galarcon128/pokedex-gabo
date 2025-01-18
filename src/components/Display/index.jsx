@@ -1,6 +1,7 @@
 import { useGetPokemonList } from "../WebServices";
 import { Routes, Route } from "react-router";
 import PokeBrowser from "./PokeBrowser";
+import "./style.css";
 export default function Display() {
   return (
     <div>
