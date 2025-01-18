@@ -1,4 +1,5 @@
 import { useGetPokemonList } from "../WebServices";
+import { Routes, Route } from "react-router";
 import PokeBrowser from "./PokeBrowser";
 export default function Display() {
   const { pokemonList, loading } = useGetPokemonList();
@@ -13,7 +14,15 @@ export default function Display() {
             backgroundColor: "var(--pokedex-color)",
           }}
         >
-          <PokeBrowser pokemonList={pokemonList} />
+          <Routes>
+            <Route
+              path="/"
+              element={<PokeBrowser pokemonList={pokemonList} />}
+            />
+            <Route path="/favorites" element={<>Favorites</>} />
+            <Route path="/help" element={<>Help</>} />
+            <Route path="/albun" element={<>Album</>} />
+          </Routes>
         </div>
       )}
     </div>

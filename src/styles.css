@@ -5,3 +5,17 @@ body {
 :root {
   --pokedex-color: red;
 }
+
+.display-layout {
+  position: absolute;
+  top: 0;
+  z-index: 99;
+  height: 15px;
+  width: 100%;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0) 69%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}

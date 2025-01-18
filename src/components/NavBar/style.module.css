@@ -27,7 +27,8 @@
 }
 
 .stateLed :hover {
-  cursor: "pointer";
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px 0px rgb(0, 0, 0);
 }
 
 .stateLed {
@@ -36,19 +37,44 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+}
+
+@keyframes blink {
+  0% {
+    box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.5);
+    opacity: 0.5;
+  }
+  50% {
+    box-shadow: 0px 0px 20px 10px rgba(255, 255, 255, 0.7);
+    opacity: 1;
+  }
+  100% {
+    box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.5);
+    opacity: 0.5;
+  }
+}
+
+.select {
+  z-index: 50;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.2);
+  animation: blink 1.5s infinite;
 }
 
 .LRed {
-  background-color: brown;
+  background-color: #920000;
   border-radius: 50%;
 }
 
 .LYellow {
-  background-color: rgb(189, 189, 1);
+  background-color: rgb(255, 251, 0);
+  opacity: 0.7;
   border-radius: 50%;
 }
 
 .LGreen {
-  background-color: green;
+  background-color: rgb(0, 250, 0);
+  opacity: 0.7;
   border-radius: 50%;
 }
