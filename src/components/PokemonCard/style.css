@@ -1,7 +1,23 @@
 .pc-canva {
   height: calc(100vh - 80px - 60px);
-  width: 90%;
+  width: 80%;
+  border-radius: 1%;
   background-color: white;
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.pc-title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 2px;
+}
+
+.pc-title p {
+  margin: 5px;
+  border-radius: 5px;
 }
 
 @keyframes shine {
