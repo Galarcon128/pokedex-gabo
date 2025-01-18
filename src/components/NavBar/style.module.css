@@ -1,0 +1,54 @@
+.layout {
+  background-color: var(--pokedex-color);
+  height: 80px;
+  display: flex;
+  border-bottom: 2px solid #1b1b1b;
+}
+
+.indicador {
+  height: 60px;
+  width: 60px;
+  margin: 10px;
+  border-radius: 50%;
+  background: rgb(2, 0, 36);
+  background: radial-gradient(
+    circle,
+    rgb(255, 255, 255) 0%,
+    rgb(59, 59, 247) 35%,
+    rgba(3, 0, 182, 0.986) 100%
+  );
+  border: 2px solid white;
+}
+
+.stateLeds {
+  display: flex;
+  padding: 10px;
+  gap: 5px;
+}
+
+.stateLed :hover {
+  cursor: "pointer";
+}
+
+.stateLed {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.LRed {
+  background-color: brown;
+  border-radius: 50%;
+}
+
+.LYellow {
+  background-color: rgb(189, 189, 1);
+  border-radius: 50%;
+}
+
+.LGreen {
+  background-color: green;
+  border-radius: 50%;
+}

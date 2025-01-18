@@ -1,0 +1,11 @@
+.cover {
+  background-color: var(--pokedex-color);
+  height: calc(100vh - 80px);
+}
+
+.lock {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
