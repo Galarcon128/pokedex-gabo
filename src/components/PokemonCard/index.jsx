@@ -23,7 +23,7 @@ export default function PokemonCard({ pokemonIndex }) {
     };
   }
 
-  console.log(pokemon);
+  //console.log(pokemon);
 
   return (
     <div
@@ -36,7 +36,7 @@ export default function PokemonCard({ pokemonIndex }) {
         <div>
           <div className="pc-title">
             <p
-              className="text-lg font-bold"
+              className="name font-bold"
               style={{
                 color: "white",
                 textTransform: "uppercase",
@@ -48,7 +48,7 @@ export default function PokemonCard({ pokemonIndex }) {
             <div className="pc-nature">
               {pokemon.nature.map((nature) => (
                 <p
-                  className="text-base font-bold"
+                  className="font-bold"
                   style={{
                     color: "white",
                     border: "1px solid black",

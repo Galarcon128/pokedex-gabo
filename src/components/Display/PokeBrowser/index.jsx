@@ -21,8 +21,13 @@ export default function PokeBrowser() {
       }}
     >
       <div className="pb-display">
-        <Search setPokemonIndex={setPokemonIndex} />
-        <PokemonCard pokemonIndex={pokemonIndex} />
+        <div id="browser-search">
+          <Search setPokemonIndex={setPokemonIndex} />
+        </div>
+
+        <div className="carrucel">
+          <PokemonCard pokemonIndex={pokemonIndex} />
+        </div>
         <Controls
           pokemonIndex={pokemonIndex}
           setPokemonIndex={setPokemonIndex}

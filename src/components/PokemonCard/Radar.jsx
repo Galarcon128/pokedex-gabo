@@ -16,6 +16,25 @@ export default function Radar({
     }
   }, [stats]);
 
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver(() => {
+      if (canva.current) {
+        setSize(canva.current.offsetWidth / 2);
+      }
+    });
+
+    if (canva.current) {
+      resizeObserver.observe(canva.current); // Empieza a observar el div
+    }
+
+    // Cleanup cuando el componente se desmonte
+    return () => {
+      if (canva.current) {
+        resizeObserver.unobserve(canva.current); // Deja de observar el div
+      }
+    };
+  }, []);
+
   return (
     <div
       ref={canva}
