@@ -5,7 +5,9 @@ import Controls from "./Controls";
 import "./style.css";
 
 export default function PokeBrowser() {
-  const [pokemonIndex, setPokemonIndex] = useState(11);
+  const [pokemonIndex, setPokemonIndex] = useState(
+    Math.floor(Math.random() * 1020) + 1
+  );
 
   return (
     <div

@@ -11,8 +11,10 @@ export default function PokemonCard({ pokemonIndex }) {
   }, [pokemonIndex]);
 
   let style = {};
+  let color = "#00F0F0";
   if (pokemon) {
     let colorA = pokemon.nature[0] ? pokemon.nature[0].color : "#ffffff";
+    color = colorA;
     let colorB = pokemon.nature[1] ? pokemon.nature[1].color : "#ffffff";
     style = {
       background: colorA,
@@ -20,6 +22,8 @@ export default function PokemonCard({ pokemonIndex }) {
         "linear-gradient(148deg, " + colorA + " 0%, " + colorB + " 100%)",
     };
   }
+
+  console.log(pokemon);
 
   return (
     <div
@@ -41,22 +45,24 @@ export default function PokemonCard({ pokemonIndex }) {
             >
               {pokemon.name}
             </p>
-            {pokemon.nature.map((nature) => (
-              <p
-                className="text-base font-bold"
-                style={{
-                  color: "white",
-                  border: "1px solid black",
-                  padding: "2px",
-                  backgroundColor: nature.color,
-                  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
-                }}
-              >
-                {nature.label}
-              </p>
-            ))}
+            <div className="pc-nature">
+              {pokemon.nature.map((nature) => (
+                <p
+                  className="text-base font-bold"
+                  style={{
+                    color: "white",
+                    border: "1px solid black",
+                    padding: "2px",
+                    backgroundColor: nature.color,
+                    textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
+                  }}
+                >
+                  {nature.label}
+                </p>
+              ))}
+            </div>
           </div>
-          <Sprite url={pokemon.sprite} />
+          <Sprite color={color} url={pokemon.sprite} stats={pokemon.stats} />
         </div>
       )}
     </div>
