@@ -6,7 +6,10 @@ export default function NavBar() {
   const navigate = useNavigate();
   return (
     <div className={Style.layout}>
-      <div className={Style.indicador}></div>
+      <div style={{ position: "relative" }}>
+        <div id="nav-indicator" className={Style.indicador}></div>
+        <div className={Style.indicadorBack} />
+      </div>
       <div className={Style.stateLeds}>
         <div
           onClick={() => {

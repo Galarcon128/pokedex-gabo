@@ -2,6 +2,7 @@ import "./style.css";
 import { useGetPokemonData } from "../WebServices";
 import Sprite from "./Sprite";
 import { useEffect } from "react";
+import { speakText } from "./Description/Resume";
 
 export default function PokemonCard({ pokemonIndex }) {
   const { pokemon, loading, load } = useGetPokemonData(pokemonIndex);
@@ -23,7 +24,7 @@ export default function PokemonCard({ pokemonIndex }) {
     };
   }
 
-  //console.log(pokemon);
+  console.log(pokemon);
 
   return (
     <div
@@ -61,6 +62,13 @@ export default function PokemonCard({ pokemonIndex }) {
                 </p>
               ))}
             </div>
+            <button
+              onClick={() => {
+                speakText(getRandomElement(pokemon.descriptions));
+              }}
+            >
+              Descripcion
+            </button>
           </div>
           <Sprite color={color} url={pokemon.sprite} stats={pokemon.stats} />
         </div>
@@ -68,4 +76,8 @@ export default function PokemonCard({ pokemonIndex }) {
     </div>
   );
 }
-//
+
+function getRandomElement(arr) {
+  const randomIndex = Math.floor(Math.random() * arr.length);
+  return arr[randomIndex];
+}
