@@ -1,10 +1,12 @@
 import { useState } from "react";
 import PokemonCard from "../../PokemonCard";
 import Search from "./search";
+import Controls from "./Controls";
 import "./style.css";
 
 export default function PokeBrowser() {
   const [pokemonIndex, setPokemonIndex] = useState(11);
+
   return (
     <div
       style={{
@@ -19,6 +21,10 @@ export default function PokeBrowser() {
       <div className="pb-display">
         <Search setPokemonIndex={setPokemonIndex} />
         <PokemonCard pokemonIndex={pokemonIndex} />
+        <Controls
+          pokemonIndex={pokemonIndex}
+          setPokemonIndex={setPokemonIndex}
+        />
       </div>
     </div>
   );
