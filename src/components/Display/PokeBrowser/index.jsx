@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PokemonCard from "../../PokemonCard";
+import { FixedSizeList as List } from "react-window";
 import Search from "./search";
 import Controls from "./Controls";
 import "./style.css";
@@ -7,6 +8,12 @@ import "./style.css";
 export default function PokeBrowser() {
   const [pokemonIndex, setPokemonIndex] = useState(
     Math.floor(Math.random() * 1020) + 1
+  );
+
+  const Card = ({ index, style }) => (
+    <div style={style}>
+      <PokemonCard pokemonIndex={index + 1} />
+    </div>
   );
 
   return (
@@ -24,14 +31,15 @@ export default function PokeBrowser() {
         <div id="browser-search">
           <Search setPokemonIndex={setPokemonIndex} />
         </div>
-
-        <div className="carrucel">
-          <PokemonCard pokemonIndex={pokemonIndex} />
-        </div>
-        <Controls
-          pokemonIndex={pokemonIndex}
-          setPokemonIndex={setPokemonIndex}
-        />
+        <List
+          height={350}
+          itemCount={1020}
+          itemSize={200}
+          layout="horizontal"
+          width={300}
+        >
+          {Card}
+        </List>
       </div>
     </div>
   );
