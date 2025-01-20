@@ -16,10 +16,7 @@ async function randomBlink(time) {
     const randomOpacity = Math.random() < 0.5 ? 0.5 : 1; // Aleatorio entre 0 y 1
     indicator.style.opacity = randomOpacity;
 
-    // Aleatorio para brillo
-    const randomGlow = Math.random() < 0.5; // Decide si debe brillar o no
-
-    if (randomGlow) {
+    if (randomOpacity === 1) {
       indicator.style.boxShadow = "0 0 20px 10px rgba(0, 0, 255, 0.7)"; // Brillo azul
     } else {
       indicator.style.boxShadow = "none"; // Sin brillo

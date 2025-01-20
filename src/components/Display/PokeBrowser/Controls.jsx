@@ -41,19 +41,7 @@ export default function Controls({ pokemonIndex, setPokemonIndex = () => {} }) {
         <Button onClick={handlePrev} variant="contained">
           Anterior
         </Button>
-        <IconButton
-          onClick={handleFavorite}
-          sx={{
-            backgroundColor: "white",
-            ":hover": { backgroundColor: "#fcff8a" },
-          }}
-        >
-          <box-icon
-            name="star"
-            type={fav.find((i) => i == pokemonIndex) ? "solid" : "regular"}
-            color="#ffe000"
-          />
-        </IconButton>
+
         <Button onClick={handleNext} variant="contained">
           Siguiente
         </Button>

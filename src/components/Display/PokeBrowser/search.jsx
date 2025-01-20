@@ -23,7 +23,7 @@ export default function Search({ setPokemonIndex = () => {} }) {
                 (n) => n === newInputValue
               );
               setInputValue(undefined);
-              setPokemonIndex(pokemonIndex + 1);
+              setPokemonIndex(pokemonIndex);
             }}
             renderInput={(params) => (
               <TextField {...params} label="Search Pokemon" />

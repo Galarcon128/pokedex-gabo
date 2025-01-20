@@ -1,20 +1,92 @@
-import { useState } from "react";
+import { useState, useEffect, useRef, createRef } from "react";
 import PokemonCard from "../../PokemonCard";
 import { FixedSizeList as List } from "react-window";
 import Search from "./search";
 import Controls from "./Controls";
 import "./style.css";
 
-export default function PokeBrowser() {
-  const [pokemonIndex, setPokemonIndex] = useState(
-    Math.floor(Math.random() * 1020) + 1
-  );
+const TOTAL_POKEMONS = 1020;
 
-  const Card = ({ index, style }) => (
-    <div style={style}>
-      <PokemonCard pokemonIndex={index + 1} />
-    </div>
+export default function PokeBrowser() {
+  const [isLandscape, setIsLandscape] = useState(
+    window.matchMedia("(orientation: landscape)").matches
   );
+  const [scrollOffset, setScrollOffset] = useState();
+  const [size, setSize] = useState();
+  const listRef = useRef();
+  const displayDiv = useRef(null);
+  let cardHeigth = 300;
+  let cardWidth = 187.5;
+  if (size) {
+    if (isLandscape) {
+      cardHeigth = size.height - 10;
+    } else {
+      cardWidth = size.width - 60;
+      cardHeigth = cardWidth * 1.6;
+    }
+  }
+  let itemSize = isLandscape ? cardWidth : cardHeigth + 30;
+
+  useEffect(() => {
+    if (Number.isSafeInteger(scrollOffset) && listRef.current) {
+      setTimeout(() => {
+        if (listRef.current) {
+          listRef.current.scrollTo(scrollOffset);
+        }
+      }, 500);
+    }
+  }, [scrollOffset]);
+
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver(() => {
+      if (displayDiv.current) {
+        const { offsetWidth, offsetHeight } = displayDiv.current;
+        setSize({ width: offsetWidth, height: offsetHeight });
+      }
+    });
+
+    if (displayDiv.current) {
+      resizeObserver.observe(displayDiv.current);
+    }
+    return () => {
+      if (displayDiv.current) {
+        resizeObserver.unobserve(displayDiv.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(orientation: landscape)");
+    const handleOrientationChange = (event) => {
+      const _scrollOffset = Number(localStorage.getItem("browserScrollOffset"));
+      setScrollOffset(_scrollOffset);
+      setIsLandscape(event.matches);
+    };
+    mediaQuery.addEventListener("change", handleOrientationChange);
+    return () => {
+      mediaQuery.removeEventListener("change", handleOrientationChange);
+    };
+  }, []);
+
+  const handleSetIndex = (index) => {
+    listRef.current.scrollToItem(index, "center");
+  };
+
+  const handleScroll = ({ scrollOffset, clientHeight }) => {
+    if (listRef.current) {
+      localStorage.setItem("browserScrollOffset", scrollOffset);
+    }
+  };
+
+  //
+  const Card = ({ index, style }) => {
+    const pokemonIndex = index + 1;
+    return (
+      <div style={style}>
+        <PokemonCard height={cardHeigth} pokemonIndex={pokemonIndex} />
+      </div>
+    );
+  };
 
   return (
     <div
@@ -27,19 +99,25 @@ export default function PokeBrowser() {
         justifyContent: "center",
       }}
     >
-      <div className="pb-display">
-        <div id="browser-search">
-          <Search setPokemonIndex={setPokemonIndex} />
-        </div>
-        <List
-          height={350}
-          itemCount={1020}
-          itemSize={200}
-          layout="horizontal"
-          width={300}
-        >
-          {Card}
-        </List>
+      <div ref={displayDiv} className="pb-display">
+        {size && (
+          <div>
+            <List
+              ref={listRef}
+              height={isLandscape ? size.height : size.height - 60}
+              itemCount={TOTAL_POKEMONS}
+              itemSize={itemSize}
+              layout={isLandscape ? "horizontal" : "vertical"}
+              width={size.width - 5}
+              onScroll={handleScroll}
+            >
+              {Card}
+            </List>
+            <div id="browser-search">
+              <Search setPokemonIndex={handleSetIndex} width={size.width} />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

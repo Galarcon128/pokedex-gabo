@@ -2,9 +2,6 @@
   height: calc(100vh - 80px - 40px);
   width: 90%;
   border: 2px solid #636363;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background: radial-gradient(
     circle,
     rgba(153, 221, 251, 1) 14%,

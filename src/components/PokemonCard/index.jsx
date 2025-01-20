@@ -2,11 +2,13 @@ import "./style.css";
 import { useGetPokemonData } from "../WebServices";
 import Sprite from "./Sprite";
 import { useEffect } from "react";
-import { speakText } from "./Description/Resume";
+import Title from "./Title";
+import Options from "./Options";
+//
 
-export default function PokemonCard({ pokemonIndex }) {
+export default function PokemonCard({ height = 300, pokemonIndex }) {
   const { pokemon, loading, load } = useGetPokemonData(pokemonIndex);
-
+  const width = height / 1.6;
   useEffect(() => {
     load();
   }, [pokemonIndex]);
@@ -24,60 +26,28 @@ export default function PokemonCard({ pokemonIndex }) {
     };
   }
 
-  console.log(pokemon);
+  //console.log(pokemon);
 
   return (
     <div
       className={`${"pc-canva"} ${loading && "load-metal"}`}
-      style={{ ...style }}
+      style={{ ...style, width: width, height: height }}
     >
       {loading ? (
         <>loading...</>
       ) : (
         <div>
-          <div className="pc-title">
-            <p
-              className="name font-bold"
-              style={{
-                color: "white",
-                textTransform: "uppercase",
-                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
-              }}
-            >
-              {pokemon.name}
-            </p>
-            <div className="pc-nature">
-              {pokemon.nature.map((nature) => (
-                <p
-                  className="font-bold"
-                  style={{
-                    color: "white",
-                    border: "1px solid black",
-                    padding: "2px",
-                    backgroundColor: nature.color,
-                    textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
-                  }}
-                >
-                  {nature.label}
-                </p>
-              ))}
-            </div>
-            <button
-              onClick={() => {
-                speakText(getRandomElement(pokemon.descriptions));
-              }}
-            >
-              Descripcion
-            </button>
+          <Title
+            name={pokemon.name}
+            index={pokemonIndex}
+            natures={pokemon.nature}
+          />
+          <div>
+            <Sprite color={color} url={pokemon.sprite} stats={pokemon.stats} />
           </div>
-          <Sprite color={color} url={pokemon.sprite} stats={pokemon.stats} />
+          <Options pokemonIndex={pokemonIndex} pokemon={pokemon} />
         </div>
       )}
     </div>
   );
-}
-
-function getRandomElement(arr) {
-  const randomIndex = Math.floor(Math.random() * arr.length);
-  return arr[randomIndex];
 }
