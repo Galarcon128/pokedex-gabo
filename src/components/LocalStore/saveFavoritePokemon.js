@@ -1,3 +1,5 @@
+import updateLocalStorage from "./updateFavoritePokemon";
+
 export default function saveFavoritePokemon(pokemonIndex) {
   let favorites = localStorage.getItem("favorites");
   if (favorites === null) {
@@ -6,6 +8,7 @@ export default function saveFavoritePokemon(pokemonIndex) {
     let favs = favorites.split(",");
     if (!favs.find((i) => i == pokemonIndex)) {
       localStorage.setItem("favorites", [...favs, pokemonIndex]);
+      setTimeout(updateLocalStorage, 100);
     }
   }
 }

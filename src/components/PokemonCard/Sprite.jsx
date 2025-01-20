@@ -19,23 +19,22 @@ export default function Sprite({ color = "", url = "", alt = "", stats = [] }) {
       id="spriteChart"
       style={{
         position: "relative",
+        width: "100%",
+        aspectRatio: 1,
       }}
     >
-      <div>
-        <img
-          src={url}
-          alt={alt}
-          style={{
-            position: "absolute",
-            width: "40%",
-            height: "auto",
-            zIndex: 5,
-            top: "50%",
-            left: "30%",
-            transform: "translate(0, 50%)",
-          }}
-        />
-      </div>
+      <img
+        src={url}
+        alt={alt}
+        style={{
+          position: "absolute",
+          zIndex: 5,
+          width: "20%",
+          left: "calc(50% - 10%)",
+          top: "calc(50% - 10%)",
+          //transform: "translate(0, 100%)",
+        }}
+      />
       <div
         style={{
           position: "absolute",

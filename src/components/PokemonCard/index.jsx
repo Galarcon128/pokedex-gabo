@@ -43,7 +43,7 @@ export default function PokemonCard({ height = 300, pokemonIndex }) {
             natures={pokemon.nature}
           />
           <div>
-            <Sprite color={color} url={pokemon.sprite} stats={pokemon.stats} />
+            <Sprite color={color} url={pokemon.gif} stats={pokemon.stats} />
           </div>
           <Options pokemonIndex={pokemonIndex} pokemon={pokemon} />
         </div>

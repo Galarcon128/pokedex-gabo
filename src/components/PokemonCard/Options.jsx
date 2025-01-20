@@ -15,7 +15,6 @@ export default function Options({ pokemonIndex, pokemon }) {
     } else {
       saveFavoritePokemon(pokemonIndex);
     }
-
     setFav(getFavoritesPokemon());
   };
 

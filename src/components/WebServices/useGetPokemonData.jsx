@@ -53,6 +53,7 @@ async function getPokemonData(pokemonIndex, setPokemon) {
     }
     pokemon.sprite = json?.sprites?.other?.home.front_default;
     pokemon.spriteShiny = json?.sprites?.other?.home.front_shiny;
+    pokemon.gif = json?.sprites?.other?.showdown?.front_default;
     pokemon.stats = json?.stats;
     //console.log(pokemon);
     setPokemon(pokemon);

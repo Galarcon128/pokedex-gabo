@@ -2,7 +2,6 @@ import { useState, useEffect, useRef, createRef } from "react";
 import PokemonCard from "../../PokemonCard";
 import { FixedSizeList as List } from "react-window";
 import Search from "./search";
-import Controls from "./Controls";
 import "./style.css";
 
 const TOTAL_POKEMONS = 1020;
@@ -102,6 +101,9 @@ export default function PokeBrowser() {
       <div ref={displayDiv} className="pb-display">
         {size && (
           <div>
+            <div id="browser-search">
+              <Search setPokemonIndex={handleSetIndex} width={size.width} />
+            </div>
             <List
               ref={listRef}
               height={isLandscape ? size.height : size.height - 60}
@@ -113,9 +115,6 @@ export default function PokeBrowser() {
             >
               {Card}
             </List>
-            <div id="browser-search">
-              <Search setPokemonIndex={handleSetIndex} width={size.width} />
-            </div>
           </div>
         )}
       </div>
