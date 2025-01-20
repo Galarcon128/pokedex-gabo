@@ -73,7 +73,7 @@ export default function App() {
                 maxWidth: dimensions.height - 200 + "px",
               }}
             >
-              <Favorites />
+              <Favorites isDesktop />
             </div>
           </div>
         </BrowserRouter>
