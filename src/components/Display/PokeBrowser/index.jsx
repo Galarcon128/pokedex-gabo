@@ -6,10 +6,13 @@ import "./style.css";
 
 const TOTAL_POKEMONS = 1020;
 
-export default function PokeBrowser() {
-  const [isLandscape, setIsLandscape] = useState(
-    window.matchMedia("(orientation: landscape)").matches
-  );
+export default function PokeBrowser({ isDesktop = false }) {
+  const [isLandscape, setIsLandscape] = useState(() => {
+    if (!isDesktop) {
+      return window.matchMedia("(orientation: landscape)").matches;
+    }
+    return false;
+  });
   const [scrollOffset, setScrollOffset] = useState();
   const [size, setSize] = useState();
   const listRef = useRef();
@@ -101,12 +104,14 @@ export default function PokeBrowser() {
       <div ref={displayDiv} className="pb-display">
         {size && (
           <div>
-            <div id="browser-search">
-              <Search setPokemonIndex={handleSetIndex} width={size.width} />
-            </div>
+            {/*!isLandscape && (
+              <div id="browser-search">
+                <Search setPokemonIndex={handleSetIndex} width={size.width} />
+              </div>
+            )*/}
             <List
               ref={listRef}
-              height={isLandscape ? size.height : size.height - 60}
+              height={isLandscape ? size.height : size.height - 4}
               itemCount={TOTAL_POKEMONS}
               itemSize={itemSize}
               layout={isLandscape ? "horizontal" : "vertical"}

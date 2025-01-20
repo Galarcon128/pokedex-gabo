@@ -1,12 +1,13 @@
 import Style from "./style.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
 
-export default function NavBar() {
+export default function NavBar({ desktop = false }) {
   const { pathname } = useLocation();
   const navigate = useNavigate();
+
   return (
     <div className={Style.layout}>
-      <div style={{ position: "relative" }}>
+      <div style={{ position: "relative", width: "90px" }}>
         <div id="nav-indicator" className={Style.indicador}></div>
         <div className={Style.indicadorBack} />
       </div>
@@ -16,7 +17,7 @@ export default function NavBar() {
             navigate("/");
           }}
           className={`${Style.LRed} ${Style.stateLed} ${
-            pathname === "/" ? Style.select : ""
+            pathname === "/" && !desktop ? Style.select : ""
           }`}
         >
           <box-icon name="home-alt-2" color="#ffffff"></box-icon>

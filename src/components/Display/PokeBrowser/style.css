@@ -15,12 +15,6 @@
   margin: 5px 0 10px 0;
 }
 
-@media (orientation: landscape) {
-  #browser-search {
-    display: none;
-  }
-}
-
 @keyframes move-gradient {
   0% {
     background-position: 80% 20%;

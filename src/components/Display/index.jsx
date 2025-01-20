@@ -3,6 +3,7 @@ import PokeBrowser from "./PokeBrowser";
 import Favorites from "./Favorites";
 import "./style.css";
 export default function Display() {
+  //mobile View
   return (
     <div>
       <Routes>
