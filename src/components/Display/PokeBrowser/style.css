@@ -1,0 +1,33 @@
+.pb-display {
+  width: 90%;
+  border: 2px solid #636363;
+  background: radial-gradient(
+    circle,
+    rgba(153, 221, 251, 1) 14%,
+    rgba(0, 9, 255, 1) 62%
+  );
+  background-size: 200%;
+  animation: move-gradient 10s infinite;
+}
+
+#browser-search {
+  margin: 5px 0 10px 0;
+}
+
+@keyframes move-gradient {
+  0% {
+    background-position: 80% 20%;
+  }
+  25% {
+    background-position: 50% 50%;
+  }
+  50% {
+    background-position: 20% 80%;
+  }
+  75% {
+    background-position: 80% 80%;
+  }
+  100% {
+    background-position: 80% 20%;
+  }
+}

@@ -1,0 +1,68 @@
+.slider-container {
+  position: relative;
+  width: 300px;
+  height: 50px;
+  background-color: #f0f0f0;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+}
+
+.slider-track {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #d3d3d3;
+  border-radius: 25px;
+}
+
+.slider-buttom {
+  width: 15px;
+  height: 15px;
+  background-color: #d1d1d1;
+  border-radius: 50%;
+  border: 2px solid #000000;
+}
+
+.slider-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  background: rgb(255, 0, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(255, 0, 0, 1) 46%,
+    rgba(0, 0, 0, 1) 49%,
+    rgba(255, 255, 255, 1) 51%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  border: 2px solid #3a3a3a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: grab;
+  transition: transform 0.2s ease;
+}
+
+.slider-thumb:active {
+  cursor: grabbing;
+}
+
+.slider-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: #555;
+  pointer-events: none;
+  font-weight: bold;
+}

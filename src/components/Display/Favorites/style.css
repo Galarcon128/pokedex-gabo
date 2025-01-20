@@ -1,0 +1,62 @@
+.fv-display-active {
+  width: 90%;
+  border: 2px solid #636363;
+  background: radial-gradient(
+    circle,
+    rgb(253, 250, 73) 14%,
+    rgb(165, 135, 3) 62%
+  );
+  background-size: 200%;
+  animation: move-gradient 5s infinite;
+}
+
+.fv-display-disable {
+  width: 90%;
+  border: 2px solid #636363;
+  background: radial-gradient(
+    circle,
+    rgb(211, 211, 211) 14%,
+    rgb(124, 123, 115) 62%
+  );
+  background-size: 200%;
+}
+
+.grid-container {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  overflow: auto;
+}
+
+.grid-item {
+  padding: 16px;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  height: 100px;
+}
+
+.grid-item:hover {
+  transform: scale(1.05);
+}
+
+@keyframes move-gradient {
+  0% {
+    background-position: 80% 20%;
+  }
+  25% {
+    background-position: 50% 50%;
+  }
+  50% {
+    background-position: 20% 80%;
+  }
+  75% {
+    background-position: 80% 80%;
+  }
+  100% {
+    background-position: 80% 20%;
+  }
+}
