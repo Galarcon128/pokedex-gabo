@@ -43,11 +43,19 @@ export default function PokemonCard({ height = 300, pokemonIndex }) {
             natures={pokemon.nature}
           />
           <div>
-            <Sprite color={color} url={pokemon.gif} stats={pokemon.stats} />
+            <Sprite
+              color={color}
+              url={isNonEmptyString(pokemon.gif) ? pokemon.gif : pokemon.sprite}
+              stats={pokemon.stats}
+            />
           </div>
           <Options pokemonIndex={pokemonIndex} pokemon={pokemon} />
         </div>
       )}
     </div>
   );
+}
+
+function isNonEmptyString(input) {
+  return typeof input === "string" && input.trim().length > 0;
 }

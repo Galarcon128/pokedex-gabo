@@ -32,10 +32,14 @@ export default function Card({ pokemonIndex }) {
           style={{
             height: "50px",
           }}
-          src={pokemon.gif}
+          src={isNonEmptyString(pokemon.gif) ? pokemon.gif : pokemon.sprite}
           alt={"pokemon " + pokemonIndex + " " + pokemon.name}
         />
       </div>
     </div>
   );
+}
+
+function isNonEmptyString(input) {
+  return typeof input === "string" && input.trim().length > 0;
 }

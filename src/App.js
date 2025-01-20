@@ -66,7 +66,13 @@ export default function App() {
               <NavBar desktop />
               <PokeBrowser isDesktop />
             </div>
-            <div style={{ marginTop: "80px" }}>
+            <div
+              style={{
+                marginTop: "80px",
+                width: "30%",
+                maxWidth: dimensions.height - 200 + "px",
+              }}
+            >
               <Favorites />
             </div>
           </div>
